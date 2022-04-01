@@ -13,10 +13,14 @@ public class ExampleUnitTest {
     int countPairs(int[] array) {
         int s = 0;
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0;  j < array.length; j++) {
+            for (int j = i+1;  j < array.length; j++) {
+                if (array[i] + array [j] == 0) {
+                    s++;
+                    break;
+                }
+                else{
 
-                s++;
-                break;
+                }
             }
         }
         return s;
@@ -26,6 +30,8 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
 
         assertEquals(1, countPairs(new int[]{-1, 1, 0, 1}));
-
+        assertEquals(1, countPairs(new int[]{1, -1}));
+        assertEquals(1, countPairs(new int[]{0, 0}));
+        assertEquals(2, countPairs(new int[]{-1, 1, -1, 1}));
     }
 }
